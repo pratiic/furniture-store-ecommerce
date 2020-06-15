@@ -1,0 +1,50 @@
+.welcome {
+	height: 100vh;
+	width: 100%;
+	background-image: url("../../assets/images/hero-bcg.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left;
+	@include flex(center, center);
+	position: relative;
+
+	.welcome-card {
+		@include flex(center, center);
+		flex-direction: column;
+		background-color: rgba(256, 256, 256, 0.75);
+		height: 25rem;
+		width: 55rem;
+		border-radius: 5px;
+		position: relative;
+		z-index: 5;
+
+		.welcome-text {
+			font-size: 4rem;
+			margin-bottom: 5rem;
+		}
+
+		.shop-now-button,
+		.shop-now-button:focus {
+			padding: 0.7rem 1.5rem;
+			outline: none;
+			border: 1px solid $orange;
+			background-color: $orange;
+			font-size: 1.75rem;
+			color: $dark-grey;
+			@include trans(color, 100ms);
+			@include trans(transform, 100ms);
+
+			&:hover {
+				transform: scale(1.03);
+			}
+		}
+
+		.shop-now-button:active {
+			opacity: 0.85;
+		}
+	}
+
+	&::after {
+		@include overlay(0.1);
+	}
+}

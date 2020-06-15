@@ -1,0 +1,113 @@
+.showcase {
+	.showcase-header {
+		font-size: 3.5rem;
+		text-align: center;
+	}
+
+	.gallery {
+		padding: 3rem 0;
+		max-width: 85%;
+		margin: auto;
+		overflow-x: hidden;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 3rem;
+
+		.product-image-card {
+			height: 28rem;
+			cursor: pointer;
+			.product-image {
+				height: 80%;
+				position: relative;
+
+				img {
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+				}
+
+				.add-to-cart-button {
+					border: none;
+					background-color: $orange;
+					padding: 0.75rem 1rem;
+					border-radius: 0px;
+					position: absolute;
+					z-index: 5;
+					right: 0;
+					bottom: 3rem;
+					transform: scaleX(0);
+					transform-origin: right;
+					@include trans(transform, 100ms);
+
+					.fas {
+						margin-left: 0.5rem;
+					}
+
+					&:hover {
+						color: white;
+					}
+				}
+
+				&::after {
+					@include overlay(0);
+					@include trans(opacity, 250ms);
+				}
+
+				&:hover::after {
+					opacity: 0.3;
+				}
+
+				&:hover .add-to-cart-button {
+					transform: scaleX(1);
+				}
+			}
+
+			.product-info {
+				height: 20%;
+				width: 100%;
+				@include flex(space-around, center);
+				flex-direction: column;
+				padding: 0.5rem 0;
+
+				h3 {
+					font-size: 2rem;
+				}
+
+				span {
+					font-size: 1.5rem;
+					font-weight: 700;
+					color: $orange;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	.showcase {
+		.gallery {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.showcase {
+		.gallery {
+			grid-template-columns: repeat(2, 1fr);
+
+			.product-image-card {
+				height: 30rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.showcase {
+		.gallery {
+			max-width: 65%;
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}
